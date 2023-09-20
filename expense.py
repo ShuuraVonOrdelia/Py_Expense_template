@@ -12,21 +12,23 @@ expense_questions = [
         "name":"label",
         "message":"New Expense - Label: ",
     },
-    {
-        "type":"input",
-        "name":"spender",
-        "message":"New Expense - Spender: ",
-    },
-
 ]
 
 
+def get_existing_users():
+    with open("users.csv", "r") as users_file:
+        reader = csv.reader(users_file)
+        return [row[0] for row in reader]
 
 def new_expense(*args):
     infos = prompt(expense_questions)
     amount = infos["amount"]
     label = infos["label"]
-    spender = infos["spender"]
+    existing_users = get_existing_users()
+
+    spender = None
+    while spender not in existing_users:
+        spender = input("Enter an existing user as the spender: ")
 
     with open("expense_report.csv", 'a', newline='') as csvfile:
         expense = csv.writer(csvfile)
