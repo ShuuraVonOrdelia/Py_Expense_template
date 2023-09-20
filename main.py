@@ -8,7 +8,7 @@ def ask_option():
         "type":"list",
         "name":"main_options",
         "message":"Expense Tracker v0.1",
-        "choices": ["New Expense","Show Status","New User","Payback Expense", "Exit"]
+        "choices": ["New Expense","Show Status","New User", "Exit"]
     }
     option = prompt(main_option)
     if (option['main_options']) == "New Expense":
@@ -16,9 +16,6 @@ def ask_option():
         ask_option()
     elif (option['main_options']) == "New User":
         add_user()
-        ask_option()
-    elif (option['main_options']) == "Payback Expense":
-        print("Not Implemented Yet")
         ask_option()
     elif (option['main_options']) == "Show Status":
         print("Not Implemented Yet")
