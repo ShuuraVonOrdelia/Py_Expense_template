@@ -1,3 +1,4 @@
+import csv
 from PyInquirer import prompt
 
 expense_questions = [
@@ -23,8 +24,16 @@ expense_questions = [
 
 def new_expense(*args):
     infos = prompt(expense_questions)
+    amount = infos["amount"]
+    label = infos["label"]
+    spender = infos["spender"]
+    with open("expense_report.csv", 'w', newline='') as csvfile:
+        amount = infos["amount"]
+        label = infos["label"]
+        spender = infos["spender"]
+        expense = csv.writer(csvfile)
+        expense.writerow([amount, label, spender])
+
     # Writing the informations on external file might be a good idea ¯\_(ツ)_/¯
     print("Expense Added !")
     return True
-
-
