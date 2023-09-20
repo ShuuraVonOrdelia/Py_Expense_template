@@ -27,10 +27,8 @@ def new_expense(*args):
     amount = infos["amount"]
     label = infos["label"]
     spender = infos["spender"]
-    with open("expense_report.csv", 'w', newline='') as csvfile:
-        amount = infos["amount"]
-        label = infos["label"]
-        spender = infos["spender"]
+
+    with open("expense_report.csv", 'a', newline='') as csvfile:
         expense = csv.writer(csvfile)
         expense.writerow([amount, label, spender])
 
