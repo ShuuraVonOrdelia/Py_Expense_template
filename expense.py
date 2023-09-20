@@ -14,7 +14,6 @@ expense_questions = [
     },
 ]
 
-
 def get_existing_users():
     with open("users.csv", "r") as users_file:
         reader = csv.reader(users_file)
